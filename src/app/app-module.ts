@@ -4,12 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 
-import { LayoutComponent} from './layout.component';
+import { Header } from './header/header';
+import { Footer } from './footer/footer';
+import { Layout } from './layout/layout';
 
 @NgModule({
   declarations: [
     App,
-    LayoutComponent
+    Header,
+    Footer,
+    Layout
   ],
   imports: [
     BrowserModule,
