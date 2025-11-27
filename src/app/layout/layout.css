@@ -1,0 +1,22 @@
+/* :host змушує <app-layout> зайняти всю висоту */
+:host {
+  display: block;
+  height: 100%;
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 100% висоти екрану */
+}
+
+.content-area {
+  /* Це "магія": блок росте і виштовхує футер вниз */
+  flex: 1;
+}
+
+/* Це гарантує, що хедер і футер не будуть стискатися */
+app-header,
+app-footer {
+  flex-shrink: 0;
+}
