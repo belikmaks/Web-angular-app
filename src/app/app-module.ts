@@ -7,13 +7,17 @@ import { App } from './app';
 import { Header } from './layout/header/header';
 import { Footer } from './layout/footer/footer';
 import { Layout } from './layout/layout';
+import { ItemsListComponent} from './items-list/items-list';
+import { ItemsCardComponent } from './items-card/items-card';
 
 @NgModule({
   declarations: [
     App,
     Header,
     Footer,
-    Layout
+    Layout,
+    ItemsListComponent,
+    ItemsCardComponent
   ],
   imports: [
     BrowserModule,
