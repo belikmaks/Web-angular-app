@@ -14,6 +14,24 @@ export class ItemsListComponent {
     { id: 1, name: 'Angular', description: 'Google\'s powerful framework for large applications.', version: '20.0.0', type: 'framework', isPopular: true },
     { id: 2, name: 'TypeScript', description: 'Adds static types to JavaScript for better scalability.', version: '5.0', type: 'language', isPopular: true },
     { id: 3, name: 'VS Code', description: 'The most popular source code editor developed by Microsoft.', version: '1.95', type: 'tool', isPopular: true },
-    { id: 4, name: 'RxJS', description: 'A library for reactive programming using observables.', version: '7.8.0', type: 'library', isPopular: false }
+    { id: 4, name: 'RxJS', description: 'A library for reactive programming using observables.', version: '7.8.0', type: 'library', isPopular: true }
   ];
+
+  onToolSelected(tool: Tool) {
+    console.log("Елемент вибрано:", tool.name, tool);
+    alert(`Ви вибрали: ${tool.name} (v${tool.version})`);
+  }
+
+  searchTerm: string = '';
+
+  get filteredTools(): Tool[] {
+    if (!this.searchTerm) {
+      return this.tools;
+    }
+    const term = this.searchTerm.toLowerCase();
+    return this.tools.filter(
+      tool => tool.name.toLowerCase().includes(term) ||
+        tool.description.toLowerCase().includes(term)
+    );
+  }
 }

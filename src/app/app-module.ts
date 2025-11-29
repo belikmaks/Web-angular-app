@@ -8,7 +8,8 @@ import { Header } from './layout/header/header';
 import { Footer } from './layout/footer/footer';
 import { Layout } from './layout/layout';
 import { ItemsListComponent} from './items-list/items-list';
-import { ItemsCardComponent } from './items-card/items-card';
+import { ItemCardComponent } from './items-card/items-card';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,11 +18,12 @@ import { ItemsCardComponent } from './items-card/items-card';
     Footer,
     Layout,
     ItemsListComponent,
-    ItemsCardComponent
+    ItemCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

@@ -1,6 +1,19 @@
 <div class="list-wrapper">
-  <h1>Main tools of the web development</h1>
-  <div *ngFor="let tool of tools" class="list-item">
-    <app-item-card [tool]="tool"></app-item-card>
+  <h2>Список основних інструментів веб-розробки</h2>
+
+  <input
+    type="text"
+    placeholder="Search..."
+    [(ngModel)]="searchTerm"
+    class="search-input"
+  >
+
+  <div *ngFor="let tool of filteredTools" class="list-item">
+
+    <app-item-card
+      [tool]="tool"
+      (selectTool)="onToolSelected($event)">
+    </app-item-card>
+
   </div>
 </div>

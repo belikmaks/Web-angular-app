@@ -59,3 +59,35 @@ app-footer {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transition: all 0.2s ease-in-out;
 }
+
+.search-input {
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0 25px 0;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #2196F3;
+  outline: none;
+}
+
+
+.tool-card-wrapper button {
+  background-color: #2196F3; /* Синій фон */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.tool-card-wrapper button:hover {
+  background-color: #1976D2;
+}
