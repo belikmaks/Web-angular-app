@@ -1,1 +1,6 @@
-<h1>Тут буде відображено наповнення items-list (практична робота 3)</h1>
+<div class="list-wrapper">
+  <h1>Main tools of the web development</h1>
+  <div *ngFor="let tool of tools" class="list-item">
+    <app-item-card [tool]="tool"></app-item-card>
+  </div>
+</div>

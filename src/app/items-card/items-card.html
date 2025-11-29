@@ -1,1 +1,21 @@
+<div class="tool-card-wrapper"
 
+     [class.highlight]="tool.isPopular"
+
+     [ngStyle]="{'background-color': tool.isPopular ? '#f0faff' : 'white'}">
+
+  <div class="card-details">
+
+    <h3>{{ tool.name }} (v{{ tool.version }})</h3>
+
+    <p class="type-tag" [class.popular-tag]="tool.isPopular">
+      {{ tool.type | uppercase }}
+    </p>
+
+    <p class="description">{{ tool.description }}</p>
+
+    <p class="popular-status" *ngIf="tool.isPopular">
+      ✨ THE MOST POPULAR
+    </p>
+  </div>
+</div>
