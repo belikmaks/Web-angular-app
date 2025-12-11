@@ -1,38 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Tool } from '../shared/models/tool.interface';
 import { DataService } from '../shared/services/data';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-items-list',
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css'],
   standalone: false
-
 })
-export class ItemsListComponent implements OnInit {
+export class ItemsListComponent implements OnInit, OnDestroy {
 
+  private toolsSubscription!: Subscription;
   public tools: Tool[] = [];
   public searchTerm: string = '';
 
-  constructor(private DataService: DataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.tools = this.DataService.getItems();
+    this.toolsSubscription = this.dataService.tools$.subscribe(
+      (data: Tool[]) => {
+        this.tools = data;
+      }
+    );
   }
 
+  ngOnDestroy(): void {
+    if (this.toolsSubscription) {
+      this.toolsSubscription.unsubscribe();
+    }
+  }
+
+
   onToolSelected(tool: Tool) {
-    console.log("Елемент вибрано:", tool.name, tool);
-    alert(`Ви вибрали: ${tool.name} (v${tool.version})`);
+    console.log("Вибрано елемент:", tool.name, tool);
+    alert(`Вибрали: ${tool.name} (v${tool.version})`);
+  }
+
+  onSearchChange(): void {
+    this.dataService.filterItems(this.searchTerm);
   }
 
   get filteredTools(): Tool[] {
-    if (!this.searchTerm) {
-      return this.tools;
-    }
-    const term = this.searchTerm.toLowerCase();
-    return this.tools.filter(
-      tool => tool.name.toLowerCase().includes(term) ||
-        tool.description.toLowerCase().includes(term)
-    );
+    return this.tools;
   }
 }

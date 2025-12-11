@@ -1,14 +1,18 @@
 <div class="list-wrapper">
-  <h2>Main tools of the web development</h2>
+  <h2>Main tools for web development</h2>
 
   <input
     type="text"
     placeholder="Search..."
+
     [(ngModel)]="searchTerm"
+
+    (ngModelChange)="onSearchChange()"
+
     class="search-input"
   >
 
-  <div *ngFor="let tool of filteredTools" class="list-item">
+  <div *ngFor="let tool of tools" class="list-item">
 
     <app-item-card
       [tool]="tool"
