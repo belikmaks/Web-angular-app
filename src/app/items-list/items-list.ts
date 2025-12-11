@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; // Видалено OnDestroy
 import { Tool } from '../shared/models/tool.interface';
 import { DataService } from '../shared/services/data';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs'; // Видалено Subscription
 
 @Component({
   selector: 'app-items-list',
@@ -9,28 +9,17 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./items-list.css'],
   standalone: false
 })
-export class ItemsListComponent implements OnInit, OnDestroy {
+export class ItemsListComponent implements OnInit {
 
-  private toolsSubscription!: Subscription;
-  public tools: Tool[] = [];
+  // Завдання 3: Дані тепер зберігаються як Observable
+  public tools$!: Observable<Tool[]>;
   public searchTerm: string = '';
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.toolsSubscription = this.dataService.tools$.subscribe(
-      (data: Tool[]) => {
-        this.tools = data;
-      }
-    );
+    this.tools$ = this.dataService.tools$;
   }
-
-  ngOnDestroy(): void {
-    if (this.toolsSubscription) {
-      this.toolsSubscription.unsubscribe();
-    }
-  }
-
 
   onToolSelected(tool: Tool) {
     console.log("Вибрано елемент:", tool.name, tool);
@@ -41,7 +30,4 @@ export class ItemsListComponent implements OnInit, OnDestroy {
     this.dataService.filterItems(this.searchTerm);
   }
 
-  get filteredTools(): Tool[] {
-    return this.tools;
-  }
 }

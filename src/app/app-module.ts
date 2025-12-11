@@ -13,6 +13,8 @@ import {FormsModule} from '@angular/forms';
 import { ItemDetails } from './item-details/item-details';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import { CommonModule } from "@angular/common";
+import { TruncatePipe } from './shared/pipes/truncate-pipe';
+import { HoverEffectDirective} from './shared/directives/hover-effect';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { CommonModule } from "@angular/common";
     Footer,
     Layout,
     ItemsListComponent,
-    ItemCardComponent
+    ItemCardComponent,
+    TruncatePipe,
+    HoverEffectDirective
   ],
   imports: [
     BrowserModule,

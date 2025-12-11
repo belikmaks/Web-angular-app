@@ -1,31 +1,28 @@
 <div class="tool-card-wrapper"
-
+     [class.highlight]="tool.isPopular"
      [ngStyle]="{'background-color': tool.isPopular ? '#f0faff' : 'white'}"
+     appHoverEffect> <div class="card-details">
 
-     [class.highlight]="tool.isPopular">
+  <img [src]="tool.logoUrl"
+       [alt]="'Logo ' + tool.name"
+       class="tool-logo">
 
-  <div class="card-details">
+  <h3>{{ tool.name }} (v{{ tool.version }})</h3>
 
-    <img [src]="tool.logoUrl"
-         [alt]="'Logo ' + tool.name"
-         class="tool-logo">
+  <p class="type-tag" [class.popular-tag]="tool.isPopular">
+    {{ tool.type | uppercase }}
+  </p>
 
-    <h3>{{ tool.name }} (v{{ tool.version }})</h3>
+  <p class="description">{{ tool.description | truncate:80 }}</p>
 
-    <p class="type-tag" [class.popular-tag]="tool.isPopular">
-      {{ tool.type | uppercase }}
-    </p>
+  <p class="rating">Rating: ⭐ {{ tool.communityRating }} / 5</p>
 
-    <p class="description">{{ tool.description }}</p>
+  <p class="popular-status" *ngIf="tool.isPopular">
+    ✨ POPULAR CHOICE
+  </p>
 
-    <p class="rating">Rating: ⭐ {{ tool.communityRating }} / 5</p>
-
-    <p class="popular-status" *ngIf="tool.isPopular">
-      ✨ Popular
-    </p>
-
-    <a [routerLink]="['/items', tool.id]" class="btn-details">
-      More information
-    </a>
-  </div>
+  <a [routerLink]="['/items', tool.id]" class="btn-details">
+    Details
+  </a>
+</div>
 </div>

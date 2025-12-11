@@ -100,3 +100,5 @@ export class DataService {
 
 }
 
+export class Data {
+}
