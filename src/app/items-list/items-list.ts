@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tool } from '../shared/models/tool.interface';
-import { Data } from '../shared/services/data';
+import { DataService } from '../shared/services/data';
 
 @Component({
   selector: 'app-items-list',
@@ -14,10 +14,10 @@ export class ItemsListComponent implements OnInit {
   public tools: Tool[] = [];
   public searchTerm: string = '';
 
-  constructor(private dataService: Data) { }
+  constructor(private DataService: DataService) { }
 
   ngOnInit(): void {
-    this.tools = this.dataService.getItems();
+    this.tools = this.DataService.getItems();
   }
 
   onToolSelected(tool: Tool) {

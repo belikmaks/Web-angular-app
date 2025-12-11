@@ -1,14 +1,29 @@
 <div class="tool-card-wrapper"
-     [class.highlight]="tool.isPopular"
-     [ngStyle]="{'background-color': tool.isPopular ? '#f0faff' : 'white'}">
+
+     [ngStyle]="{'background-color': tool.isPopular ? '#f0faff' : 'white'}"
+
+     [class.highlight]="tool.isPopular">
 
   <div class="card-details">
+
+    <img [src]="tool.logoUrl"
+         [alt]="'Logo ' + tool.name"
+         class="tool-logo">
+
     <h3>{{ tool.name }} (v{{ tool.version }})</h3>
+
+    <p class="type-tag" [class.popular-tag]="tool.isPopular">
+      {{ tool.type | uppercase }}
+    </p>
+
+    <p class="description">{{ tool.description }}</p>
+
+    <p class="rating">Rating: ⭐ {{ tool.communityRating }} / 5</p>
 
     <p class="popular-status" *ngIf="tool.isPopular">
       ✨ Popular
     </p>
 
-    <button (click)="onSelect()">More details</button>
+    <button (click)="onSelect()">Детальніше</button>
   </div>
 </div>
