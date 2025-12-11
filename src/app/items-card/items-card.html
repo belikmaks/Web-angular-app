@@ -24,6 +24,8 @@
       ✨ Popular
     </p>
 
-    <button (click)="onSelect()">Детальніше</button>
+    <a [routerLink]="['/items', tool.id]" class="btn-details">
+      More information
+    </a>
   </div>
 </div>

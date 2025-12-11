@@ -173,3 +173,41 @@ app-footer {
   padding-top: 5px;
   font-size: 0.9em;
 }
+
+/* src/styles.css (Фрагмент для кнопок) */
+
+.tool-card-wrapper button,
+.btn-details,
+.btn-back { /* Додаємо стилі для routerLink та кнопки повернення */
+  /* Робить елемент блоковим, щоб застосувати padding та ширину */
+  display: inline-block;
+  text-decoration: none; /* Прибирає підкреслення */
+  text-align: center;
+  cursor: pointer;
+
+  /* Візуальні стилі */
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  font-size: 1em;
+
+  /* Розміщення */
+  align-self: flex-end;
+  margin-top: 10px;
+}
+
+.tool-card-wrapper button:hover,
+.btn-details:hover,
+.btn-back:hover {
+  background-color: #004085;
+}
+
+/* Якщо у вас є стара кнопка всередині ItemCard, ці стилі її також покриють: */
+.tool-card-wrapper button {
+  /* Додатково: якщо це справжня кнопка, вона також повинна бути вирівняна */
+  align-self: flex-end;
+}

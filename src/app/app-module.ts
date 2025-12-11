@@ -10,6 +10,9 @@ import { Layout } from './layout/layout';
 import { ItemsListComponent} from './items-list/items-list';
 import { ItemCardComponent } from './items-card/items-card';
 import {FormsModule} from '@angular/forms';
+import { ItemDetails } from './item-details/item-details';
+import {RouterLink, RouterOutlet} from '@angular/router';
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -22,8 +25,9 @@ import {FormsModule} from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
+    AppRoutingModule,
+    CommonModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

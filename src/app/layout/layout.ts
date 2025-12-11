@@ -9,7 +9,6 @@ import { Component } from '@angular/core';
       <app-header></app-header>
 
       <main class="content-area">
-        <app-items-list></app-items-list>
         <router-outlet></router-outlet>
       </main>
 
