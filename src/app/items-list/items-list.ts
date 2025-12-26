@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core'; // Видалено OnDestroy
+import { Component, OnInit } from '@angular/core';
 import { Tool } from '../shared/models/tool.interface';
 import { DataService } from '../shared/services/data';
-import { Observable } from 'rxjs'; // Видалено Subscription
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-items-list',
@@ -11,7 +11,6 @@ import { Observable } from 'rxjs'; // Видалено Subscription
 })
 export class ItemsListComponent implements OnInit {
 
-  // Завдання 3: Дані тепер зберігаються як Observable
   public tools$!: Observable<Tool[]>;
   public searchTerm: string = '';
 

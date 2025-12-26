@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { Tool } from '../models/tool.interface';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -96,6 +97,22 @@ export class DataService {
   getToolById(id: number): Observable<Tool | undefined> {
     const tool = this.originalTools.find(t => t.id === id);
     return of(tool);
+  }
+
+  addTool(toolData: any): void {
+    const newId = this.originalTools.length > 0
+      ? Math.max(...this.originalTools.map(t => t.id)) + 1
+      : 1;
+
+    const newTool = {
+      ...toolData,
+      id: newId,
+      isPopular: false,
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/919/919833.png' // Стандартна іконка
+    };
+
+    this.originalTools.push(newTool);
+    this.toolsSubject.next([...this.originalTools]);
   }
 
 }
