@@ -17,6 +17,10 @@ export class ItemsListComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    // 1. ОБОВ'ЯЗКОВО викликаємо метод, який запускає HTTP GET запит
+    this.dataService.getTools();
+
+    // 2. Підписуємось на потік даних, який оновиться після відповіді сервера
     this.tools$ = this.dataService.tools$;
   }
 
@@ -26,7 +30,7 @@ export class ItemsListComponent implements OnInit {
   }
 
   onSearchChange(): void {
+    // При роботі з API фільтрацію краще робити через сервіс або пайпи
     this.dataService.filterItems(this.searchTerm);
   }
-
 }
